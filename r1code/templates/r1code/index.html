@@ -1,20 +1,28 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>ACE in Action</title>
-<link rel="stylesheet" href="{% static 'r1code/css/style.css' %}">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="editor"></div>
+<div class="container">
+    <div id="editor-nav">
+        <button class="btn">Run</button>
+        <button class="btn">Save</button>
+    </div>
+    <div id="console-nav"></div>
+    <div id="editor"></div>
+    <div id="console"></div>
+</div>
     
-<script src="{% static 'r1code/js/ace-editor/src/ace.js' %}"></script>
-<script src="{% static 'r1code/js/editor.js' %}"></script>
+<script src="ace-editor/src/ace.js"></script>
+<script src="editor.js"></script>
 <script>
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/python");
+    editor.setShowPrintMargin(false);
 </script>
 </body>
 </html>
