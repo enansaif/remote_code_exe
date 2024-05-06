@@ -37,3 +37,20 @@ editorSave.addEventListener('click', () => {
     let blob = new Blob([textContent], { type: 'text/plain' });
     saveBlob(blob, 'main.py');
 });
+
+editorRun.addEventListener('click', () => {
+    let console = document.getElementById('console');
+    let textContent = editor.getValue();
+    const request = new XMLHttpRequest();
+    request.onload = () => {
+        let jsonData = JSON.parse(request.response);
+        console.innerText = jsonData["stdout"]
+    };
+    request.open('POST', executionURL, true);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.setRequestHeader("X-CSRFToken", csrfToken);
+    request.send(JSON.stringify({
+        'code' : textContent,
+        'language' : 'python',
+    }));
+});

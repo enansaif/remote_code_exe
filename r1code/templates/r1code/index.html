@@ -21,5 +21,9 @@
 <script src="{% static 'r1code/js/ace-editor/src/ace.js' %}"></script>
 <script src="{% static 'r1code/js/ace-editor/src/ext-language_tools.js' %}"></script>
 <script src="{% static 'r1code/js/editor.js' %}"></script>
+<script>
+    let executionURL = "{% url 'r1code:execute_code' %}";
+    let csrfToken = "{{ csrf_token }}";
+</script>
 </body>
 </html>
